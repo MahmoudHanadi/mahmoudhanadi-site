@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Business Development & Partnerships",
+    "examples": [
+      "Negotiated multi‑year contracts with telecom carriers across EMEA",
+      "Forged alliances with payment providers to unlock new revenue streams",
+      "Developed joint value propositions that accelerated partner adoption"
+    ]
+  },
+  {
+    "name": "Google Media Buying & User Acquisition",
+    "examples": [
+      "Scaled performance marketing budgets while improving ROAS",
+      "Implemented segmented campaigns across PMax, Display and Search",
+      "Led creative testing programmes grounded in data"
+    ]
+  },
+  {
+    "name": "Product Management (MVP → OKRs)",
+    "examples": [
+      "Defined MVP scopes and prioritised roadmaps using OKRs",
+      "Collaborated with engineering to deliver features on time",
+      "Set up product analytics to measure adoption and success"
+    ]
+  },
+  {
+    "name": "Go‑to‑Market Strategy",
+    "examples": [
+      "Crafted launch plans spanning positioning, pricing and promotion",
+      "Coordinated cross‑functional teams for seamless product launches",
+      "Analysed competitive landscapes to refine GTM approaches"
+    ]
+  },
+  {
+    "name": "Process & Ops (automation, compliance)",
+    "examples": [
+      "Built n8n automations to scale workflows and reduce manual work",
+      "Established compliance checklists for regulatory markets",
+      "Designed operational dashboards to track KPIs in real time"
+    ]
+  }
+]
