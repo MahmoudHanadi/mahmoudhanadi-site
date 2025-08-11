@@ -1,16 +1,10 @@
-import nextMDX from '@next/mdx';
-
-// Enable MDX support and specify page extensions
-const withMDX = nextMDX({
-  extension: /\.mdx?$/,
-});
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable the new app directory (Next.js 13/14 feature)
   experimental: {
     appDir: true,
   },
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  // Keep only standard page extensions
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx'],
 };
 
-export default withMDX(nextConfig);
+export default nextConfig;
