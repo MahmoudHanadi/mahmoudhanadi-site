@@ -57,21 +57,22 @@ export default function ResultsPage() {
       </div>
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {filtered.map((item) => (
-          <Link key={item.slug} href={`/case/${item.slug}`}>
+          <Link key={item.slug} href={`/case/${item.slug}`}> 
             <div
               onClick={() => trackResultsCardOpen(item.slug)}
-              className="p-6 rounded-2xl bg-white/60 dark:bg-gray-900/60 backdrop-blur border border-gray-200 dark:border-gray-800 shadow-sm hover:-translate-y-1 hover:shadow-md transition cursor-pointer focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-olive"
+              className="p-6 rounded-2xl bg-white/70 dark:bg-gray-900/70 backdrop-blur border border-gray-200 dark:border-gray-800 shadow-sm hover:-translate-y-1 hover:shadow-md transition cursor-pointer focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-olive"
             >
-              <h2 className="text-lg font-semibold mb-2 text-olive dark:text-olive">
-                {item.title}
-              </h2>
+              <div className="flex items-center justify-between mb-2">
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{item.title}</h2>
+                <span className="text-xs font-medium text-gray-500 dark:text-gray-400">{item.type}</span>
+              </div>
               <p className="text-sm text-gray-700 dark:text-gray-300 mb-1">
-                <strong>Context:</strong> {item.context}
+                {item.context}
               </p>
-              <p className="text-sm text-gray-700 dark:text-gray-300 mb-1">
-                <strong>Outcome:</strong> {item.outcome}
+              <p className="text-2xl font-bold text-olive dark:text-olive mb-2">
+                {item.outcome}
               </p>
-              <div className="mt-3 flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2">
                 {item.toolkit.map((tag) => (
                   <span
                     key={tag}

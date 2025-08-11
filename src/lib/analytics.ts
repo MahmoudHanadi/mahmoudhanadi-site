@@ -14,6 +14,19 @@ declare global {
 }
 
 /**
+ * Fire a generic custom event
+ */
+export function trackEvent(event: string, props?: Record<string, any>) {
+  if (typeof window !== 'undefined' && window.plausible) {
+    if (props) {
+      window.plausible(event, { props });
+    } else {
+      window.plausible(event);
+    }
+  }
+}
+
+/**
  * Fire a hero CTA click event.
  */
 export function trackHeroCta(cta: 'see_results' | 'solve_problem') {
@@ -43,5 +56,16 @@ export function trackStrategyDownload() {
 export function trackContactSubmit() {
   if (typeof window !== 'undefined' && window.plausible) {
     window.plausible('contact_submit');
+  }
+}
+
+export function trackMetricClick(slug: string) {
+  // Safe no-op if trackEvent is unavailable
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { trackEvent } = require("@/lib/analytics");
+    if (trackEvent) trackEvent("home_metric_click", { slug });
+  } catch (e) {
+    // ignore in non-browser / dev
   }
 }

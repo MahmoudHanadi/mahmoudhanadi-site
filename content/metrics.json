@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "carrier-billing-launch",
+    "title": "Carrier billing rollout",
+    "display": "EU & MENA",
+    "value": [0, 0],
+    "unit": "",
+    "trend": "up",
+    "category": "GTM",
+    "note": "Launched operations across multiple countries (compliance-first)"
+  },
+  {
+    "slug": "org-xfn-teams",
+    "title": "Cross-functional teams",
+    "display": "2",
+    "value": [2, 2],
+    "unit": "",
+    "trend": "flat",
+    "category": "Ops",
+    "note": "Product localization, campaign strategy, and UX collaboration"
+  },
+  {
+    "slug": "profit-initiatives",
+    "title": "Profit-driving initiatives",
+    "display": "2",
+    "value": [2, 2],
+    "unit": "",
+    "trend": "up",
+    "category": "Growth",
+    "note": "Focused on enhanced traffic monetization with partners"
+  },
+  {
+    "slug": "role-progression",
+    "title": "Role progression",
+    "display": "5 roles",
+    "value": [5, 5],
+    "unit": "",
+    "trend": "up",
+    "category": "Career",
+    "note": "From Email Specialist → Regional Growth & Key Accounts Lead"
+  },
+  {
+    "slug": "languages",
+    "title": "Languages",
+    "display": "EN · AR · HE",
+    "value": [3, 3],
+    "unit": "",
+    "trend": "flat",
+    "category": "Delivery",
+    "note": "Multilingual client & partner communication"
+  },
+  {
+    "slug": "speaking",
+    "title": "Industry speaking",
+    "display": "MEF & WT",
+    "value": [2, 2],
+    "unit": "",
+    "trend": "up",
+    "category": "Brand",
+    "note": "MEF Forum & World Telemedia appearances"
+  }
+]
