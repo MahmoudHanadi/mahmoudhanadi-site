@@ -20,13 +20,22 @@ async function getSpeakingEntries() {
 export default async function SpeakingPage() {
   const entries = await getSpeakingEntries();
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Speaking</h1>
+    <div className="space-y-8 max-w-6xl mx-auto">
+      <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">Speaking &amp; Events</h1>
+      <p className="text-gray-700 dark:text-gray-300 max-w-3xl">
+        Occasions where I’ve shared insights on growth, media buying and GTM at
+        conferences and forums. More to come soon!
+      </p>
       <div className="space-y-6">
         {entries.map((entry) => (
-          <div key={entry.slug} className="p-6 rounded-xl bg-sand dark:bg-gray-800">
-            <h2 className="text-xl font-semibold mb-1">{entry.frontmatter.title}</h2>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+          <div
+            key={entry.slug}
+            className="p-6 rounded-2xl bg-white/60 dark:bg-gray-900/60 backdrop-blur border border-gray-200 dark:border-gray-800 shadow-sm hover:-translate-y-1 hover:shadow-md transition"
+          >
+            <h2 className="text-xl font-semibold mb-1 text-olive dark:text-olive">
+              {entry.frontmatter.title}
+            </h2>
+            <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
               {entry.frontmatter.eventDate} · {entry.frontmatter.location}
             </p>
             <div className="prose dark:prose-invert">

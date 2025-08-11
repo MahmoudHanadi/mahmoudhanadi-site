@@ -61,27 +61,36 @@ export default function AskPage() {
   }
 
   return (
-    <div className="space-y-6 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold">Ask Mahmoud</h1>
+    <div className="space-y-8 max-w-4xl mx-auto">
+      <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
+        Ask Mahmoud
+      </h1>
+      <p className="text-gray-700 dark:text-gray-300 max-w-3xl">
+        Share your goal or problem and get a concise, actionable plan. Choose the
+        area you’re focused on and let’s get started.
+      </p>
       <div>
-        <label htmlFor="goal" className="block mb-1 font-medium">
-          Describe your goal or problem
+        <label htmlFor="goal" className="block mb-2 font-medium text-gray-900 dark:text-gray-100">
+          Describe your goal or challenge
         </label>
         <textarea
           id="goal"
           value={goal}
           onChange={(e) => setGoal(e.target.value)}
-          className="w-full p-3 border rounded-md bg-transparent"
-          rows={4}
+          className="w-full p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-white/80 dark:bg-gray-900/60 backdrop-blur focus:outline-none focus:ring-2 focus:ring-olive"
+          rows={5}
+          placeholder="E.g. double our ARPU in Q3 across EMEA markets"
         />
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-3">
         {categories.map((cat) => (
           <button
             key={cat.value}
             onClick={() => setSelected(cat.value)}
-            className={`px-3 py-1 rounded-full border text-sm ${
-              selected === cat.value ? 'bg-olive text-white' : 'text-gray-700 dark:text-gray-200'
+            className={`px-4 py-2 rounded-full border text-sm transition focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+              selected === cat.value
+                ? 'bg-olive text-white border-olive'
+                : 'bg-white/70 dark:bg-gray-900/40 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-olive/10 dark:hover:bg-olive/20'
             }`}
           >
             {cat.label}
@@ -91,58 +100,62 @@ export default function AskPage() {
       <button
         onClick={handleSubmit}
         disabled={loading || !goal}
-        className="px-6 py-3 rounded-full bg-keffiyeh-red text-white shadow disabled:opacity-50"
+        className="px-8 py-3 rounded-full bg-keffiyeh-red text-white shadow disabled:opacity-50 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-keffiyeh-red"
       >
         {loading ? 'Generating…' : 'Generate Plan'}
       </button>
 
       {response && (
-        <div className="space-y-4 mt-8 bg-sand dark:bg-gray-800 p-6 rounded-xl">
-          <h2 className="text-2xl font-semibold mb-2">Strategy Plan</h2>
-          <div>
-            <h3 className="font-semibold">Goal Recap</h3>
-            <p>{response.goalRecap}</p>
-          </div>
-          <div>
-            <h3 className="font-semibold">Leadership Plan</h3>
-            <p>{response.leadershipPlan}</p>
-          </div>
-          <div>
-            <h3 className="font-semibold">Hands‑On Steps</h3>
-            <p>{response.handsOnSteps}</p>
-          </div>
-          <div>
-            <h3 className="font-semibold">Risks & Mitigations</h3>
-            <p>{response.risks}</p>
-          </div>
-          <div>
-            <h3 className="font-semibold">90‑Day Roadmap</h3>
-            <p>{response.roadmap}</p>
-          </div>
-          {response.cites && response.cites.length > 0 && (
+        <div className="space-y-6 mt-10 p-6 rounded-2xl bg-white/60 dark:bg-gray-900/60 backdrop-blur border border-gray-200 dark:border-gray-800">
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+            Strategy Plan
+          </h2>
+          <div className="space-y-4 text-gray-700 dark:text-gray-300">
             <div>
-              <h3 className="font-semibold">Related Cases</h3>
-              <ul className="list-disc list-inside">
-                {response.cites.map((slug) => (
-                  <li key={slug}>
-                    <a href={`/case/${slug}`} className="underline">
-                      {slug}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <h3 className="font-semibold text-olive dark:text-olive">Goal Recap</h3>
+              <p>{response.goalRecap}</p>
             </div>
-          )}
-          <div className="flex gap-4 mt-4">
+            <div>
+              <h3 className="font-semibold text-olive dark:text-olive">Leadership Plan</h3>
+              <p>{response.leadershipPlan}</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-olive dark:text-olive">Hands‑On Steps</h3>
+              <p>{response.handsOnSteps}</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-olive dark:text-olive">Risks &amp; Mitigations</h3>
+              <p>{response.risks}</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-olive dark:text-olive">90‑Day Roadmap</h3>
+              <p>{response.roadmap}</p>
+            </div>
+            {response.cites && response.cites.length > 0 && (
+              <div>
+                <h3 className="font-semibold text-olive dark:text-olive">Related Cases</h3>
+                <ul className="list-disc list-inside">
+                  {response.cites.map((slug) => (
+                    <li key={slug}>
+                      <a href={`/case/${slug}`} className="underline text-keffiyeh-red">
+                        {slug}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+          <div className="flex flex-wrap gap-3 mt-6">
             <button
               onClick={handleDownload}
-              className="px-4 py-2 rounded-full bg-olive text-white shadow"
+              className="px-4 py-2 rounded-full bg-olive text-white shadow hover:bg-olive/80 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-olive"
             >
               Download as TXT
             </button>
             <button
               onClick={() => alert('Email feature coming soon')}
-              className="px-4 py-2 rounded-full bg-gray-500 text-white shadow"
+              className="px-4 py-2 rounded-full bg-gray-500 text-white shadow hover:bg-gray-600 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
             >
               Email me this
             </button>

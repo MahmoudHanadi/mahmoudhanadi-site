@@ -1,8 +1,8 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import NavBar from '../components/NavBar';
+import SiteFooter from '../components/SiteFooter';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,13 +17,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body
         className={`${inter.className} bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col`}
       >
-        <Header />
-        <main className="flex-1 p-4 md:p-8">{children}</main>
-        <Footer />
+        {/* Global navigation */}
+        <NavBar />
+        <main className="flex-1 px-4 md:px-8 py-6 md:py-10">{children}</main>
+        {/* Global footer */}
+        <SiteFooter />
       </body>
     </html>
   );

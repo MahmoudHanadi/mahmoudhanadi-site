@@ -20,16 +20,24 @@ export default function ResultsPage() {
   const [filter, setFilter] = useState<string>('All');
   const types = Array.from(new Set(results.map((r) => r.type)));
 
-  const filtered =
-    filter === 'All' ? results : results.filter((r) => r.type === filter);
+  const filtered = filter === 'All' ? results : results.filter((r) => r.type === filter);
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Results</h1>
-      <div className="flex flex-wrap gap-3">
+    <div className="space-y-8 max-w-6xl mx-auto">
+      <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">Results</h1>
+      <p className="text-gray-700 dark:text-gray-300 max-w-3xl">
+        Explore anonymized examples of measurable outcomes across growth, acquisition,
+        GTM and operations. Filter the gallery by outcome type to zero in on what
+        matters most to you.
+      </p>
+      <div className="flex flex-wrap gap-3 mt-2">
         <button
           onClick={() => setFilter('All')}
-          className={`px-3 py-1 rounded-full border ${filter === 'All' ? 'bg-olive text-white' : 'text-gray-700 dark:text-gray-200'}`}
+          className={`px-4 py-2 rounded-full border transition focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+            filter === 'All'
+              ? 'bg-olive text-white border-olive'
+              : 'bg-white/70 dark:bg-gray-900/40 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-olive/10 dark:hover:bg-olive/20'
+          }`}
         >
           All
         </button>
@@ -37,34 +45,37 @@ export default function ResultsPage() {
           <button
             key={t}
             onClick={() => setFilter(t)}
-            className={`px-3 py-1 rounded-full border ${filter === t ? 'bg-olive text-white' : 'text-gray-700 dark:text-gray-200'}`}
+            className={`px-4 py-2 rounded-full border transition focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+              filter === t
+                ? 'bg-olive text-white border-olive'
+                : 'bg-white/70 dark:bg-gray-900/40 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-olive/10 dark:hover:bg-olive/20'
+            }`}
           >
             {t}
           </button>
         ))}
       </div>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {filtered.map((item) => (
           <Link key={item.slug} href={`/case/${item.slug}`}>
             <div
               onClick={() => trackResultsCardOpen(item.slug)}
-              className="p-6 rounded-2xl shadow hover:-translate-y-1 transition transform bg-white dark:bg-gray-900 border dark:border-gray-800 cursor-pointer"
+              className="p-6 rounded-2xl bg-white/60 dark:bg-gray-900/60 backdrop-blur border border-gray-200 dark:border-gray-800 shadow-sm hover:-translate-y-1 hover:shadow-md transition cursor-pointer focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-olive"
             >
-              <h2 className="text-xl font-semibold mb-2">{item.title}</h2>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+              <h2 className="text-lg font-semibold mb-2 text-olive dark:text-olive">
+                {item.title}
+              </h2>
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-1">
                 <strong>Context:</strong> {item.context}
               </p>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                <strong>Approach:</strong> {item.approach}
-              </p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-1">
                 <strong>Outcome:</strong> {item.outcome}
               </p>
-              <div className="mt-3 flex flex-wrap gap-1">
+              <div className="mt-3 flex flex-wrap gap-2">
                 {item.toolkit.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs px-2 py-1 rounded-full bg-sand text-gray-800 dark:bg-gray-800 dark:text-gray-200"
+                    className="text-xs px-2 py-1 rounded-full bg-sand/80 text-gray-800 dark:bg-gray-800 dark:text-gray-200"
                   >
                     {tag}
                   </span>

@@ -12,6 +12,7 @@ module.exports = {
           red: '#B22222',
         },
         olive: '#3D9970',
+        teal: '#008080',
         sand: '#F4E3C1',
       },
       fontFamily: {
