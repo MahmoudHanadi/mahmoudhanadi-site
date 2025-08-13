@@ -2,6 +2,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 // import matter from 'gray-matter';
+import fsExtra from 'fs/promises';
 
 // This module provides a simple Retrieval‑Augmented Generation (RAG) helper.
 // In a production environment you would generate embeddings via OpenAI’s
@@ -30,6 +31,49 @@ async function getRelatedSlugs(category: string): Promise<string[]> {
  */
 export async function generateResponse(goal: string, category: string) {
   const related = await getRelatedSlugs(category);
+  
+  try {
+    const cfgRaw = await fsExtra.readFile(
+      path.join(process.cwd(), 'content', 'ask-config.json'),
+      'utf8'
+    );
+    const cfg = JSON.parse(cfgRaw) as { 
+      systemInstructions: string; 
+      hiddenKnowledge: string[];
+      apiKeys: { openai: string };
+    };
+    
+    // If OpenAI key is configured, use GPT-4o-mini
+    if (cfg.apiKeys.openai) {
+      const OpenAI = require('openai');
+      const openai = new OpenAI({ apiKey: cfg.apiKeys.openai });
+      
+      const prompt = `System: ${cfg.systemInstructions}\n\nHidden Knowledge:\n${cfg.hiddenKnowledge.join('\n')}\n\nUser Question: ${goal}\nCategory: ${category}\n\nPlease provide a structured response with: Goal Recap, Leadership Plan, Hands-On Steps, Risks & Mitigations, and 90-Day Roadmap. Base your answer only on the provided knowledge and website content.`;
+      
+      const completion = await openai.chat.completions.create({
+        model: "gpt-4o-mini",
+        messages: [{ role: "user", content: prompt }],
+        max_tokens: 1000,
+        temperature: 0.7,
+      });
+      
+      const aiResponse = completion.choices[0]?.message?.content || '';
+      
+      // Parse AI response and return structured format
+      return {
+        goalRecap: `You want to ${goal}.`,
+        leadershipPlan: aiResponse,
+        handsOnSteps: `Based on AI analysis: ${aiResponse}`,
+        risks: `AI identified risks: ${aiResponse}`,
+        roadmap: `AI roadmap: ${aiResponse}`,
+        cites: related,
+      };
+    }
+  } catch (error) {
+    console.error('OpenAI API error:', error);
+  }
+  
+  // Fallback to existing logic if OpenAI fails
   return {
     goalRecap: `You want to ${goal}.`,
     leadershipPlan: `Define a strategy to achieve ${goal}, involving clear OKRs and stakeholder alignment.`,

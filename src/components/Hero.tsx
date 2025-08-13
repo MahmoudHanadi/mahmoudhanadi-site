@@ -39,14 +39,14 @@ export default function Hero() {
         <>
           <motion.div
             aria-hidden
-            className="absolute -top-16 -left-16 w-72 h-72 bg-olive/20 rounded-full blur-3xl"
+            className="absolute -top-16 -left-16 w-72 h-72 bg-olive/20 rounded-full blur-3xl pointer-events-none -z-10"
             initial={{ opacity: 0.1, scale: 0.9 }}
             animate={{ opacity: 0.6, scale: 1.2 }}
             transition={{ duration: 9, repeat: Infinity, repeatType: 'reverse' }}
           />
           <motion.div
             aria-hidden
-            className="absolute -bottom-8 -right-20 w-80 h-80 bg-keffiyeh-red/20 rounded-full blur-3xl"
+            className="absolute -bottom-8 -right-20 w-80 h-80 bg-keffiyeh-red/20 rounded-full blur-3xl pointer-events-none -z-10"
             initial={{ opacity: 0.1, scale: 0.9 }}
             animate={{ opacity: 0.5, scale: 1.1 }}
             transition={{ duration: 7, repeat: Infinity, repeatType: 'reverse' }}

@@ -9,6 +9,11 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata = {
   title: 'Mahmoud Hanadi – Results‑first growth & product leader',
   description: 'From vision to measurable results — leadership, strategy, and execution.',
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+  },
+  manifest: '/manifest.webmanifest',
 };
 
 export default function RootLayout({

@@ -21,20 +21,22 @@ const categories = [
 ];
 
 export default function AskPage() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [goal, setGoal] = useState('');
   const [selected, setSelected] = useState(categories[0].value);
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState<ResponseData | null>(null);
 
   async function handleSubmit() {
-    if (!goal) return;
+    if (!goal || !name || !email) return;
     setLoading(true);
     trackAskSubmit(selected);
     try {
       const res = await fetch('/api/ask', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ goal, category: selected }),
+        body: JSON.stringify({ goal, category: selected, user: { name, email } }),
       });
       const json = await res.json();
       if (json.success) {
@@ -62,6 +64,16 @@ export default function AskPage() {
 
   return (
     <div className="space-y-8 max-w-4xl mx-auto">
+      <div className="grid gap-4 md:grid-cols-2">
+        <div>
+          <label htmlFor="name" className="block mb-2 font-medium text-gray-900 dark:text-gray-100">Name</label>
+          <input id="name" value={name} onChange={(e) => setName(e.target.value)} className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white/80 dark:bg-gray-900/60" placeholder="Your name" />
+        </div>
+        <div>
+          <label htmlFor="email" className="block mb-2 font-medium text-gray-900 dark:text-gray-100">Email</label>
+          <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white/80 dark:bg-gray-900/60" placeholder="you@example.com" />
+        </div>
+      </div>
       <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
         Ask Mahmoud
       </h1>
@@ -99,7 +111,7 @@ export default function AskPage() {
       </div>
       <button
         onClick={handleSubmit}
-        disabled={loading || !goal}
+        disabled={loading || !goal || !name || !email}
         className="px-8 py-3 rounded-full bg-keffiyeh-red text-white shadow disabled:opacity-50 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-keffiyeh-red"
       >
         {loading ? 'Generating…' : 'Generate Plan'}
