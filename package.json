@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check:insecure": "grep -RIn --exclude-dir=node_modules --exclude-dir=.next --exclude-dir=build --exclude-dir=dist \"http://\" . || echo \"No insecure URLs found\""
   },
   "dependencies": {
     "next": "^14.0.0",

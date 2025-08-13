@@ -32,6 +32,25 @@ const trendSymbol: Record<Metric["trend"], string> = {
   down: "↓",
 };
 
+function getMetricHref(metric: Metric): string {
+	switch (metric.slug) {
+		case "speaking":
+			return "/speaking";
+		case "languages":
+			return "/skills";
+		case "role-progression":
+			return "/timeline";
+		case "profit-initiatives":
+			return "/results"; // no /cases route; results lists case studies
+		case "org-xfn-teams":
+			return "/timeline";
+		case "carrier-billing-launch":
+			return "/skills";
+		default:
+			return `/case/${metric.slug}`;
+	}
+}
+
 export default function StatsGrid({ items }: { items: Metric[] }) {
   const prefersReducedMotion = useReducedMotion();
 
@@ -70,8 +89,8 @@ export default function StatsGrid({ items }: { items: Metric[] }) {
             )}
             <div className="flex items-center justify-between">
               <span className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">{m.category}</span>
-              <Link
-                href={`/case/${m.slug}`}
+				<Link
+					href={getMetricHref(m)}
                 className="text-sm text-keffiyeh-red hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-keffiyeh-red rounded"
                 onClick={() => trackMetricClick(m.slug)}
               >

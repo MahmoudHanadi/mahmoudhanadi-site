@@ -4,25 +4,25 @@
     "title": "Doubled ARPU in 90 Days",
     "context": "Subscription product, EMEA",
     "approach": "Segmented UA, landing tests, retention levers",
-    "outcome": "+95–120% ARPU; CAC stable",
+    "outcome": "**+95–120% ARPU; CAC stable**",
     "toolkit": ["Google Ads (PMax/Display)", "LTV modeling", "n8n automations", "AI ideation"],
     "type": "Growth"
   },
   {
     "slug": "ua-roas-2x",
     "title": "2× ROAS via Creative/Feed Iteration",
-    "context": "E‑commerce mid‑market",
+    "context": "E-commerce mid-market",
     "approach": "Creative testing and feed iteration",
-    "outcome": "ROAS from ~1.1→2.2 in 10 weeks",
+    "outcome": "**ROAS ~1.1→2.2 in 10 weeks**",
     "toolkit": ["Google Ads (Shopping/Display)", "Dynamic creative testing", "Feed optimization", "AI copy ideation"],
     "type": "Acquisition"
   },
   {
     "slug": "carrier-billing-launch",
-    "title": "Multi‑Market Carrier Billing Launch",
+    "title": "Multi-Market Carrier Billing Launch",
     "context": "Digital goods subscription",
     "approach": "Compliance‑driven GTM and carrier onboarding",
-    "outcome": "Six markets live in 12 months; compliant GTM",
+    "outcome": "**Six markets live in 12 months; compliant GTM**",
     "toolkit": ["Partnership negotiations", "Regulatory compliance", "Carrier integrations", "Automation scripting"],
     "type": "Go‑to‑Market"
   }

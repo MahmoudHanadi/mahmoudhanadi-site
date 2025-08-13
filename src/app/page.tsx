@@ -72,6 +72,9 @@ function AnimatedEmoji({ emoji, className = '' }: { emoji: string; className?: s
         return { rotate: isHovered ? [0, 5, -5, 0] : 0, scale: isHovered ? 1.1 : 1 };
       case '🇳🇱':
         return { rotate: isHovered ? [0, -5, 5, 0] : 0, scale: isHovered ? 1.1 : 1 };
+      case '🧆':
+        // Subtle, airy hover animation for the Mr Hummus emoji
+        return { y: isHovered ? -4 : 0, rotate: isHovered ? [0, -3, 3, 0] : 0, scale: isHovered ? 1.08 : 1 };
       default:
         return { scale: isHovered ? 1.1 : 1 };
     }
@@ -105,25 +108,25 @@ export default function Home() {
     {
       title: 'Business Dev & Partnerships',
       description:
-        'C-level relationships, aligned incentives, and long-term value creation across EU & MENA.',
+        'Structure win-win agreements with carriers, PSPs, and key partners to unlock and sustain revenue across MENA, EU, APAC, and North America.',
       icon: '🤝',
     },
     {
       title: 'Growth Strategy',
       description:
-        'Data-driven prioritization for ARPU/LTV, experimentation, and retention-led revenue.',
+        'Prioritize for ARPU/LTV, test systematically, and budget by cohort quality—not vibes. Decision gates in weeks 1–2; double-down within 1–2 months when ROI is healthy.',
       icon: '📈',
     },
     {
       title: 'User Acquisition',
       description:
-        'Google Ads (Display & PMax), creative/feed iteration, segmented campaigns, compliant ops.',
+        'Google Ads (Search/Display/YouTube/PMax) and social (Meta, TikTok), plus popular POP & PUSH DSPs. Data integrity and policy-safe execution over everything.',
       icon: '🎯',
     },
     {
       title: 'GTM Strategy',
       description:
-        'Positioning, offers, and channels that convert. Carrier billing playbooks, launch confidence.',
+        'Playbooks, approvals, and localization to go-to-market in ~2 months in MENA—connecting gateways and navigating regulatory + technical requirements.',
       icon: '🚀',
     },
   ];
@@ -291,16 +294,22 @@ export default function Home() {
       <section className="mt-20 max-w-4xl mx-auto px-4 md:px-8 text-center space-y-6">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">About Mahmoud</h2>
         <p className="text-base text-gray-600 dark:text-gray-400 italic mb-4">
-          AKA <span className="font-semibold text-olive">Mr Hummus</span> 🧆
+          AKA <span className="font-semibold text-olive">Mr Hummus</span> <AnimatedEmoji emoji="🧆" className="inline-block align-[-2px]" />
         </p>
         <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-          With over eight years across content subscriptions and e‑commerce, I’ve built
-          partnerships, scaled UA and launched products from scratch. I speak three
-          languages (EN/AR/HE) and split my time between Debrecen and Amsterdam.
+          I’m a growth operator focused on building compliant, compounding systems. For 8+ years across SaaS, content subscriptions, and e-commerce, I’ve turned fuzzy goals into playbooks, policy-safe campaigns, and repeatable results—from first launch to scale.
         </p>
         <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-          If you found me via LinkedIn, start by exploring the results or drop
-          me a challenge via Ask Mahmoud. I’d love to learn what you’re building.
+          I work across MENA, EU, and APAC, speak EN/AR/HE, and split my time between Debrecen and Amsterdam. My edge: align partners and cross-functional teams, pass Google/carrier checks, stand up a data spine (ARPU/LTV with cohort views), and double-down within 1–2 months when the numbers prove out. In MENA, I routinely get GTM live in ~2 months by navigating gateways, regulators, and local creative rules.
+        </p>
+        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          Found me via LinkedIn? Start with the Results—or drop me a challenge via Ask Mahmoud.
+        </p>
+        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          Why “Mr Hummus”? The nickname stuck after I kept showing up to team meetups with homemade hummus—then clients and industry friends picked it up. It’s a small signal of how I work: experiment, share, iterate—then scale what wins.
+        </p>
+        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          Need a steady hand on growth and profit-first ideas? Contact me and let’s get your next inflection point on the calendar.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link href="/results">

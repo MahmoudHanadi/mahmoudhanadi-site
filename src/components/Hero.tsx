@@ -60,10 +60,10 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
       >
-        From vision to measurable results
+        Scale user acquisition you can measure.
       </motion.h1>
       <p className="text-lg md:text-xl mb-6 text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-        Leadership, strategy and hands‑on execution across BD, Google UA, GTM and ops. Get results that matter.
+        I lead growth and partnerships for SaaS and content providers—plus aggregators/PSPs, telcos, and e-commerce—building compliant funnels, ARPU-aware budgeting, and creative systems that compound across MENA, EU, and APAC.
       </p>
       <div className="flex flex-col sm:flex-row justify-center gap-4">
         <Link href="/results">
@@ -74,12 +74,12 @@ export default function Hero() {
             See Results
           </button>
         </Link>
-        <Link href="/ask">
+        <Link href="/contact">
           <button
             onClick={() => trackHeroCta('solve_problem')}
             className="px-6 py-3 rounded-full bg-keffiyeh-red text-white shadow hover:bg-keffiyeh-red/80 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-keffiyeh-red"
           >
-            Solve a Problem
+            Contact Me
           </button>
         </Link>
       </div>

@@ -84,14 +84,6 @@ export default function SiteFooter() {
                 GitHub
               </a>
             </li>
-            <li>
-              <a
-                href="mailto:hello@mahmoudhanadi.com"
-                className="hover:text-olive transition"
-              >
-                Email
-              </a>
-            </li>
           </ul>
         </div>
       </div>
