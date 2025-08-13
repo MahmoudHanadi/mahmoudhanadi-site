@@ -1,6 +1,5 @@
 {
   "redirects": [
-    { "source": "http://mahmoudhanadi.com/(.*)", "destination": "https://mahmoudhanadi.com/$1", "permanent": true },
     { "source": "/(.*)", "has": [{ "type": "host", "value": "www.mahmoudhanadi.com" }], "destination": "https://mahmoudhanadi.com/$1", "permanent": true }
   ],
   "headers": [

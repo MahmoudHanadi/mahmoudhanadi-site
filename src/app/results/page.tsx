@@ -16,7 +16,7 @@ type Result = {
 };
 
 export default function ResultsPage() {
-  const results: Result[] = resultsData as any;
+  const results: Result[] = resultsData as unknown as Result[];
   const [filter, setFilter] = useState<string>('All');
   const types = Array.from(new Set(results.map((r) => r.type)));
 

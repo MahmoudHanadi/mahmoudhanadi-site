@@ -56,6 +56,7 @@ export default async function CasePage({ params }: { params: Params }) {
       </div>
     );
   } catch (err) {
+    console.error('Error loading case MDX', err);
     return (
       <div className="py-16 text-center text-red-600">
         <p>Case study not found.</p>

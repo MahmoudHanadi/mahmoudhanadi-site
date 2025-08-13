@@ -29,6 +29,7 @@ export default function ContactPage() {
         setStatus('error');
       }
     } catch (err) {
+      console.error('Contact form submit error', err);
       setStatus('error');
     }
   }

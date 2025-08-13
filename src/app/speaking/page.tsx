@@ -3,7 +3,13 @@ import path from 'path';
 import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 
-async function getSpeakingEntries() {
+interface SpeakingFrontmatter {
+  title: string;
+  eventDate: string;
+  location: string;
+}
+
+async function getSpeakingEntries(): Promise<Array<{ slug: string; frontmatter: SpeakingFrontmatter; content: string }>> {
   const dir = path.join(process.cwd(), 'content', 'speaking');
   const files = await fs.readdir(dir);
   const entries = await Promise.all(
@@ -11,7 +17,8 @@ async function getSpeakingEntries() {
       const mdxPath = path.join(dir, file);
       const source = await fs.readFile(mdxPath, 'utf8');
       const { content, data } = matter(source);
-      return { slug: file.replace(/\.mdx$/, ''), frontmatter: data as any, content };
+      const frontmatter = data as SpeakingFrontmatter;
+      return { slug: file.replace(/\.mdx$/, ''), frontmatter, content };
     }),
   );
   return entries;

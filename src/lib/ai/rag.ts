@@ -1,7 +1,7 @@
-import type { NextRequest } from 'next/server';
+// import type { NextRequest } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
+// import matter from 'gray-matter';
 
 // This module provides a simple Retrieval‑Augmented Generation (RAG) helper.
 // In a production environment you would generate embeddings via OpenAI’s
@@ -16,7 +16,7 @@ import matter from 'gray-matter';
  */
 async function getRelatedSlugs(category: string): Promise<string[]> {
   const resultsJsonPath = path.join(process.cwd(), 'content', 'results.json');
-  const data = JSON.parse(await fs.readFile(resultsJsonPath, 'utf8')) as any[];
+  const data = JSON.parse(await fs.readFile(resultsJsonPath, 'utf8')) as Array<{ slug: string; type: string }>;
   return data
     .filter((item) => item.type.toLowerCase().includes(category.toLowerCase()))
     .map((item) => item.slug);

@@ -7,16 +7,17 @@
  * script in your _document file or RootLayout.
  */
 
+type PlausibleProps = { props: Record<string, unknown> };
 declare global {
   interface Window {
-    plausible?: (event: string, options?: { props: Record<string, any> }) => void;
+    plausible?: (event: string, options?: PlausibleProps) => void;
   }
 }
 
 /**
  * Fire a generic custom event
  */
-export function trackEvent(event: string, props?: Record<string, any>) {
+export function trackEvent(event: string, props?: Record<string, unknown>) {
   if (typeof window !== 'undefined' && window.plausible) {
     if (props) {
       window.plausible(event, { props });
@@ -60,12 +61,8 @@ export function trackContactSubmit() {
 }
 
 export function trackMetricClick(slug: string) {
-  // Safe no-op if trackEvent is unavailable
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const { trackEvent } = require("@/lib/analytics");
-    if (trackEvent) trackEvent("home_metric_click", { slug });
-  } catch (e) {
-    // ignore in non-browser / dev
+  // Delegate to trackEvent when available; otherwise no-op
+  if (typeof window !== 'undefined' && window.plausible) {
+    trackEvent('home_metric_click', { slug });
   }
 }

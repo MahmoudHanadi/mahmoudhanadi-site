@@ -6,7 +6,7 @@ interface Skill {
 }
 
 export default function SkillsPage() {
-  const data: Skill[] = skills as any;
+  const data: Skill[] = skills as unknown as Skill[];
   return (
     <div className="space-y-8 max-w-6xl mx-auto">
       <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">Skills & Expertise</h1>

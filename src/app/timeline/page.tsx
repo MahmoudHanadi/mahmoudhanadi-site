@@ -1,6 +1,6 @@
 "use client";
 
-import { timeline } from '@/lib/timeline';
+// import { timeline } from '@/lib/timeline';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 
@@ -62,13 +62,9 @@ function TimelineNavigation({
 
 // Individual Timeline Item Component
 function TimelineItemComponent({ 
-  item, 
-  index, 
-  totalItems 
+  item
 }: { 
   item: TimelineItem; 
-  index: number; 
-  totalItems: number; 
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -338,18 +334,14 @@ export default function TimelinePage() {
             className="absolute left-8 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-gradient-to-b from-olive/50 via-gray-300/40 to-keffiyeh-red/50 dark:from-olive/60 dark:via-gray-600/40 dark:to-keffiyeh-red/60"
           />
           <div className="space-y-16">
-            {enhancedTimeline.map((item, index) => (
+            {enhancedTimeline.map((item) => (
               <div
                 key={item.year}
                 id={`timeline-${item.year}`}
                 data-year={item.year}
                 className="scroll-mt-[160px] md:scroll-mt-[180px]"
               >
-                <TimelineItemComponent
-                  item={item}
-                  index={index}
-                  totalItems={enhancedTimeline.length}
-                />
+                <TimelineItemComponent item={item} />
               </div>
             ))}
           </div>

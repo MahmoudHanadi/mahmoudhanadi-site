@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useEffect, useRef } from 'react';
+import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Hero from '@/components/Hero';
@@ -21,38 +21,7 @@ type Result = {
 };
 
 // Animated Counter Component
-function AnimatedCounter({ value, suffix = '', className = '' }: { value: number; suffix?: string; className?: string }) {
-  const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  useEffect(() => {
-    if (!hasAnimated) {
-      setHasAnimated(true);
-      const duration = 2000; // 2 seconds
-      const steps = 60;
-      const increment = value / steps;
-      let current = 0;
-      
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= value) {
-          setCount(value);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(current));
-        }
-      }, duration / steps);
-
-      return () => clearInterval(timer);
-    }
-  }, [value, hasAnimated]);
-
-  return (
-    <span className={className}>
-      {count}{suffix}
-    </span>
-  );
-}
+// Removed unused AnimatedCounter to satisfy lint rules
 
 // Animated Emoji Component
 function AnimatedEmoji({ emoji, className = '' }: { emoji: string; className?: string }) {
@@ -133,40 +102,7 @@ export default function Home() {
 
   // Stats summarising recent accomplishments. Each stat includes a value, label and category
   // to signal which pillar it relates to. These can be updated as more results are added.
-  const stats = [
-    {
-      label: 'Revenue growth',
-      value: '',
-      category: 'Growth',
-      up: true,
-      numericValue: 250,
-      suffix: '+',
-    },
-    {
-      label: 'Top 1 in active clients',
-      value: 'generating ',
-      category: 'Acquisition',
-      up: true,
-      numericValue: undefined as unknown as number, // display value text instead
-      suffix: '',
-    },
-    {
-      label: 'Reduction in CAC',
-      value: '',
-      category: 'Ops',
-      up: true,
-      numericValue: 45,
-      suffix: '%',
-    },
-    {
-      label: 'Satisfied clients',
-      value: '',
-      category: 'Delivery',
-      up: true,
-      numericValue: 90,
-      suffix: '+',
-    },
-  ];
+  // Removed unused stats to satisfy lint rules
 
   // Enhanced animation variants for staggering children on scroll
   const stagger = {
@@ -193,20 +129,7 @@ export default function Home() {
     },
   };
 
-  const statsVariant = {
-    hidden: { opacity: 0, y: 15, scale: 0.9 },
-    show: { 
-      opacity: 1, 
-      y: 0, 
-      scale: 1,
-      transition: { 
-        duration: 0.6, 
-        ease: 'easeOut',
-        type: "spring",
-        stiffness: 80
-      }
-    },
-  };
+  // Removed unused statsVariant to satisfy lint rules
 
   return (
     <>
