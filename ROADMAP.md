@@ -1,39 +1,54 @@
-# Roadmap
+# Development Roadmap
 
-This document outlines potential enhancements for the Mahmoud Hanadi site beyond the initial MVP.
+## Completed Features
 
-## Results Gallery
+- ✅ Responsive design with Tailwind CSS
+- ✅ Dark mode support
+- ✅ Framer Motion animations
+- ✅ MDX content management
+- ✅ Dynamic routing for cases, results, skills, and speaking
+- ✅ Analytics integration with Plausible
+- ✅ SEO optimization with metadata
+- ✅ Mobile-first responsive design
+- ✅ Custom color palette and design system
+- ✅ Performance optimization with Next.js 14
 
-- Add multi‑select filters and search capability.
-- Bundle downloadable PDF packs of selected case studies.
+## Planned Enhancements
 
-## Case Pages
+### Content Management
+- [ ] CMS integration for easier content updates
+- [ ] Image optimization and lazy loading
+- [ ] Content versioning and drafts
 
-- Include interactive artefacts such as mini dashboards or charts (e.g. ROAS curves).
-- Allow visitors to leave comments or questions (moderated).
+### Performance & SEO
+- [ ] Core Web Vitals optimization
+- [ ] Structured data (JSON-LD) implementation
+- [ ] Sitemap generation
+- [ ] RSS feed for blog content
 
-## Skills Visualisation
+### User Experience
+- [ ] Search functionality across content
+- [ ] Related content suggestions
+- [ ] Newsletter subscription
+- [ ] Social sharing enhancements
 
-- Build a force‑directed graph to visualise the relationships between skills and outcomes.
-- Enable filtering by toolset or industry.
+### Technical Improvements
+- [ ] TypeScript strict mode
+- [ ] Unit and integration tests
+- [ ] Error boundary implementation
+- [ ] Performance monitoring
+- [ ] Accessibility improvements (ARIA, keyboard navigation)
 
-## Ask Mahmoud Enhancements
+### Analytics & Insights
+- [ ] Custom event tracking
+- [ ] Conversion funnel analysis
+- [ ] A/B testing framework
+- [ ] User behavior analytics
 
-- Allow users to upload a brief or deck; summarise with AI and generate a Mermaid Gantt chart.
-- Push generated plans to a Notion page or similar workspace via API.
-- Offer tone toggling (professional vs casual) and translation support.
+## Future Considerations
 
-## Content Authoring
-
-- Introduce an admin mini‑CMS using Contentlayer UI or Netlify CMS for non‑technical editing.
-- Automate deployment when new MDX content is added.
-
-## Community & Newsletter
-
-- Launch a newsletter with a regular cadence, providing insights and case study updates.
-- Build a simple subscription form and integrate with an email service (e.g. Resend).
-
-## Miscellaneous
-
-- Add a 404 and 500 error page with helpful links.
-- Improve rate‑limiting on API endpoints to prevent abuse.
+- [ ] Blog section for thought leadership
+- [ ] Resource library (templates, guides)
+- [ ] Interactive tools and calculators
+- [ ] Multi-language support
+- [ ] PWA capabilities

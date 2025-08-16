@@ -42,12 +42,6 @@ export function trackResultsCardOpen(slug: string) {
   }
 }
 
-export function trackAskSubmit(category: string) {
-  if (typeof window !== 'undefined' && window.plausible) {
-    window.plausible('ask_submit', { props: { category } });
-  }
-}
-
 export function trackStrategyDownload() {
   if (typeof window !== 'undefined' && window.plausible) {
     window.plausible('strategy_download');

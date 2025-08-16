@@ -45,7 +45,8 @@ export async function generateResponse(goal: string, category: string) {
     
     // If OpenAI key is configured, use GPT-4o-mini
     if (cfg.apiKeys.openai) {
-      const OpenAI = require('openai');
+      // Use dynamic import instead of require()
+      const OpenAI = await import('openai').then(m => m.default);
       const openai = new OpenAI({ apiKey: cfg.apiKeys.openai });
       
       const prompt = `System: ${cfg.systemInstructions}\n\nHidden Knowledge:\n${cfg.hiddenKnowledge.join('\n')}\n\nUser Question: ${goal}\nCategory: ${category}\n\nPlease provide a structured response with: Goal Recap, Leadership Plan, Hands-On Steps, Risks & Mitigations, and 90-Day Roadmap. Base your answer only on the provided knowledge and website content.`;

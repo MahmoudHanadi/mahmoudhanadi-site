@@ -8,7 +8,7 @@ import { useState } from 'react';
 // button rendered separately so we can style it distinctively.
 const links = [
   { name: 'Results', href: '/results' },
-  { name: 'Cases', href: '/results' },
+  { name: 'Cases', href: '/case' },
   { name: 'Timeline', href: '/timeline' },
   { name: 'Skills', href: '/skills' },
   { name: 'Speaking', href: '/speaking' },
@@ -45,31 +45,28 @@ export default function NavBar() {
           </div>
         </Link>
         {/* Desktop navigation */}
-        <div className="hidden md:flex items-center space-x-6">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm text-gray-800 dark:text-gray-200 hover:text-olive dark:hover:text-olive transition"
-            >
-              {link.name}
-            </Link>
-          ))}
-          {/* CTA button */}
-          <Link href="/ask">
-            <span className="ml-4 inline-block rounded-full px-5 py-2 bg-keffiyeh-red text-white text-sm font-medium shadow hover:bg-keffiyeh-red/80 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-keffiyeh-red">
-              Ask
-            </span>
+        <nav className="hidden md:flex items-center space-x-6">
+          <Link href="/results" className="text-sm font-medium text-gray-700 hover:text-olive transition">
+            Results
           </Link>
-        </div>
+          <Link href="/case" className="text-sm font-medium text-gray-700 hover:text-olive transition">
+            Cases
+          </Link>
+          <Link href="/skills" className="text-sm font-medium text-gray-700 hover:text-olive transition">
+            Skills
+          </Link>
+          <Link href="/speaking" className="text-sm font-medium text-gray-700 hover:text-olive transition">
+            Speaking
+          </Link>
+          <Link href="/timeline" className="text-sm font-medium text-gray-700 hover:text-olive transition">
+            Timeline
+          </Link>
+          <Link href="/contact" className="text-sm font-medium text-gray-700 hover:text-olive transition">
+            Contact
+          </Link>
+        </nav>
         {/* Mobile actions */}
         <div className="md:hidden flex items-center space-x-3">
-          {/* CTA button on mobile */}
-          <Link href="/ask">
-            <span className="inline-block rounded-full px-4 py-2 bg-keffiyeh-red text-white text-sm font-medium shadow hover:bg-keffiyeh-red/80 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-keffiyeh-red">
-              Ask
-            </span>
-          </Link>
           {/* Hamburger toggle */}
           <button
             className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-olive"

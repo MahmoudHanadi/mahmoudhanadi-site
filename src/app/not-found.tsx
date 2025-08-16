@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { trackEvent } from "@/lib/analytics";
+// Remove the unused trackEvent import
+// import { trackEvent } from "@/lib/analytics";
 
 const fade = {
   hidden: { opacity: 0, y: 12 },
@@ -18,10 +19,6 @@ const float = {
 
 export default function NotFound() {
   const prefersReducedMotion = useReducedMotion();
-
-  const handleClick = (cta: "home" | "results" | "ask") => {
-    trackEvent("not_found_cta_click", { cta });
-  };
 
   return (
     <section
@@ -79,30 +76,21 @@ export default function NotFound() {
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:justify-center">
-          <Link
-            href="/"
-            onClick={() => handleClick("home")}
-            className="inline-flex items-center justify-center rounded-full px-5 py-3 text-white bg-olive hover:bg-olive/90 transition shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-olive"
-            aria-label="Go home"
-          >
-            Go Home
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Link href="/results">
+            <button className="px-6 py-3 rounded-full bg-keffiyeh-red text-white shadow-lg hover:bg-keffiyeh-red/80 transition">
+              See Results
+            </button>
           </Link>
-          <Link
-            href="/results"
-            onClick={() => handleClick("results")}
-            className="inline-flex items-center justify-center rounded-full px-5 py-3 border border-olive/40 text-olive hover:-translate-y-0.5 transition bg-white/70 dark:bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-olive"
-            aria-label="Explore results"
-          >
-            Explore Results
+          <Link href="/case">
+            <button className="px-6 py-3 rounded-full bg-olive text-white shadow-lg hover:bg-olive/80 transition">
+              View Cases
+            </button>
           </Link>
-          <Link
-            href="/ask"
-            onClick={() => handleClick("ask")}
-            className="inline-flex items-center justify-center rounded-full px-5 py-3 border border-keffiyeh-red/50 text-keffiyeh-red hover:-translate-y-0.5 transition bg-white/70 dark:bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-keffiyeh-red"
-            aria-label="Ask Mahmoud"
-          >
-            Ask Mahmoud
+          <Link href="/contact">
+            <button className="px-6 py-3 rounded-full bg-keffiyeh-red text-white shadow-lg hover:bg-keffiyeh-red/80 transition">
+              Contact Me
+            </button>
           </Link>
         </div>
       </motion.div>

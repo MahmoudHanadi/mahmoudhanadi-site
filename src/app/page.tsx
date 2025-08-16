@@ -4,9 +4,10 @@ import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Hero from '@/components/Hero';
-import StatsGrid, { type Metric } from '@/components/StatsGrid';
-import metrics from '../../content/metrics.json';
+import StatsGrid from '@/components/StatsGrid';
 import LogoTicker from '@/components/LogoTicker';
+import { Button } from '@/components/ui/Button';
+import metrics from '../../content/metrics.json';
 import resultsData from '../../content/results.json';
 
 // Types for imported data
@@ -226,7 +227,7 @@ export default function Home() {
           I work across MENA, EU, and APAC, speak EN/AR/HE, and split my time between Debrecen and Amsterdam. My edge: align partners and cross-functional teams, pass Google/carrier checks, stand up a data spine (ARPU/LTV with cohort views), and double-down within 1–2 months when the numbers prove out. In MENA, I routinely get GTM live in ~2 months by navigating gateways, regulators, and local creative rules.
         </p>
         <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-          Found me via LinkedIn? Start with the Results—or drop me a challenge via Ask Mahmoud.
+          Found me via LinkedIn? Start with the Results—or explore my Cases for detailed insights.
         </p>
         <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
           Why “Mr Hummus”? The nickname stuck after I kept showing up to team meetups with homemade hummus—then clients and industry friends picked it up. It’s a small signal of how I work: experiment, share, iterate—then scale what wins.
@@ -234,16 +235,16 @@ export default function Home() {
         <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
           Need a steady hand on growth and profit-first ideas? Contact me and let’s get your next inflection point on the calendar.
         </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link href="/results">
-            <span className="inline-block px-6 py-3 rounded-full bg-olive text-white shadow hover:bg-olive/80 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-olive">
+            <Button variant="primary" size="lg">
               See More Results
-            </span>
+            </Button>
           </Link>
-          <Link href="/ask">
-            <span className="inline-block px-6 py-3 rounded-full bg-keffiyeh-red text-white shadow hover:bg-keffiyeh-red/80 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-keffiyeh-red">
-              Ask Mahmoud
-            </span>
+          <Link href="/contact">
+            <Button variant="secondary" size="lg">
+              Get in Touch
+            </Button>
           </Link>
         </div>
       </section>

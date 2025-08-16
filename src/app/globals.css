@@ -2,6 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom CSS variables for consistent colors */
+:root {
+  --color-primary: #0D9488;
+  --color-primary-dark: #0F766E;
+  --color-secondary: #E63946;
+  --color-secondary-dark: #C53030;
+  --color-accent: #E9C46A;
+  --color-accent-light: #FFF8E7;
+  --color-neutral-bg: #F8FAF9;
+  --color-neutral-border: #E5E7EB;
+  --color-neutral-text: #0F172A;
+}
+
+/* Ensure buttons maintain their styling */
+.btn-primary {
+  @apply bg-primary hover:bg-primary-dark text-white;
+}
+
+.btn-secondary {
+  @apply bg-secondary hover:bg-secondary-dark text-white;
+}
+
+/* Fix button centering */
+.btn-group {
+  @apply flex justify-center items-center space-x-4;
+}
+
+/* Custom utility classes for brand consistency */
+.bg-gradient-hero {
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.05) 0%, rgba(230, 57, 70, 0.05) 100%);
+}
+
+.shadow-brand {
+  box-shadow: 0 4px 6px -1px rgba(13, 148, 136, 0.1), 0 2px 4px -1px rgba(230, 57, 70, 0.06);
+}
+
+.shadow-brand-lg {
+  box-shadow: 0 10px 15px -3px rgba(13, 148, 136, 0.1), 0 4px 6px -2px rgba(230, 57, 70, 0.05);
+}
+
+.ring-brand {
+  --tw-ring-color: #0D9488;
+}
+
+.ring-secondary {
+  --tw-ring-color: #E63946;
+}
+
 /* Custom global styles */
 html,
 body {
